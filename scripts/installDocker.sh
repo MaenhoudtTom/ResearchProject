@@ -30,7 +30,7 @@ apt update
 apt install docker-ce docker-ce-cli containerd.io -y
 systemctl enable docker.service
 systemctl enable containerd.service
-usermod -aG docker tom
+usermod -aG docker $1
 echo "----------------------------------------------"
 echo "Finished installing Docker"
 echo "Reload shell to gain access to Docker commands"
