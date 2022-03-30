@@ -16,9 +16,20 @@ then
         # Stopping the script
 	echo "----------------------------------------------"
         echo "Please run the script with a path to the file to use for the kubectl config"
-        echo "Exmple: sudo bash installKubectl.sh pathToFile"
+        echo "Exmple: sudo bash installKubectl.sh pathToFile user"
 	echo "----------------------------------------------"
         exit 2
+fi
+
+# Check for parameter
+if [ -z "$2" ]
+then
+        # Stopping the script
+	echo "----------------------------------------------"
+        echo "Please run the script with the name of the user"
+        echo "Exmple: sudo bash installKubectl.sh pathToFile user"
+	echo "----------------------------------------------"
+        exit 3
 fi
 
 if [ -f $1 ]
@@ -30,7 +41,7 @@ else
 	echo "----------------------------------------------"
 	echo "File not found. Are you sure the path to the file is correct?"
 	echo "----------------------------------------------"
-	exit 3
+	exit 4
 fi
 
 echo "----------------------------------------------"
@@ -45,8 +56,8 @@ apt install kubectl -y
 echo "----------------------------------------------"
 echo "Configuring kubectl to access cluster"
 echo "----------------------------------------------"
-mkdir /home/$USER/.kube/
-mv $1 /home/$USER/.kube/config
+mkdir /home/$2/.kube/
+cp $1 /home/$2/.kube/config
 
 echo "----------------------------------------------"
 echo "Generating autocompletion script for bash"
