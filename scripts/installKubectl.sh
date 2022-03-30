@@ -45,8 +45,8 @@ apt install kubectl -y
 echo "----------------------------------------------"
 echo "Configuring kubectl to access cluster"
 echo "----------------------------------------------"
-mkdir /home/tom/.kube/
-mv $1 /home/tom/.kube/config
+mkdir /home/$USER/.kube/
+mv $1 /home/$USER/.kube/config
 
 echo "----------------------------------------------"
 echo "Generating autocompletion script for bash"
